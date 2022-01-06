@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Excel column finder</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout : fixed;
+      word-break:break-all;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 6px;
+    }
+  </style>
+</head>
+  <body>
+    <h3>Word Counter</h3>
+    <form action="/" method="POST">
+      <div>
+        <textarea name="content" rows="10" cols="60" placeholder="Enter content..."></textarea>
+        <input type="submit" value="Submit"/>
+      </div>
+      {{ if .error}}
+        <p style="color: red">
+          {{.error}}
+        </p>
+      {{end}}
+    </form>
+    <br/>
+    <div>
+      <table>
+        {{range .words }}
+          <tr>
+            {{range . }}
+                <td>{{.Key}} - {{.Value}}</td>
+            {{end}}
+          </tr>
+        {{end}}
+      </table>
+    </div>
+  </body>
+</html>
